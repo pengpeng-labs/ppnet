@@ -1,0 +1,4 @@
+build/
+target/
+*.img
+.DS_Store

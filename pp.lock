@@ -1,0 +1,16 @@
+version = 1
+
+[[package]]
+name = "osbare"
+version = "0.1.1"
+source = "git+https://github.com/pengpeng-labs/osbare.git?tag=v0.1.1"
+checksum = "7bb5c182c9379326e758ccb4519f2d7306f74df5dee3c45e80895300b1df5ec5"
+commit = "67a3d124aa7c9096c474753f6a36bbfeb3c76b25"
+
+[[package]]
+name = "oscore"
+version = "0.1.2"
+source = "git+https://github.com/pengpeng-labs/oscore.git?tag=v0.1.2"
+checksum = "a7cb860c8a5849de649d208d4a6bb774d2727d10260df1c1f269062009ffb6ba"
+commit = "55a6b7ad11f0293f2ae4295ace3b7961b72b6ff2"
+dependencies = ["osbare"]
