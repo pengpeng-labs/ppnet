@@ -4,6 +4,8 @@ set -eu
 root=$(CDPATH= cd -- "$(dirname "$0")/.." && pwd)
 destination="$root/build/test-pki"
 third_party=${THIRD_PARTY_BUILD:-"$root/build/third_party"}
+HOST_CC=${HOST_CC:-cc}
+HOST_AR=${HOST_AR:-ar}
 bearssl_source=$(cat "$third_party/bearssl.path")
 mkdir -p "$destination"
 
@@ -26,7 +28,9 @@ openssl x509 -req -sha256 -days 1 -in "$destination/server.csr" \
 host_tree="$third_party/bearssl-host"
 rm -rf "$host_tree"
 cp -R "$bearssl_source" "$host_tree"
-make -C "$host_tree" tools >/dev/null
+rm -rf "$host_tree/build"
+make -C "$host_tree" tools CC="$HOST_CC" LD="$HOST_CC" AR="$HOST_AR" \
+    >/dev/null
 "$host_tree/build/brssl" ta -q "$destination/ca.crt" \
     >"$destination/trust_anchors.c"
 

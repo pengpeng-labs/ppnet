@@ -21,7 +21,7 @@ test-protocol:
 
 test-qemu:
 	CC=$(CC) AR=$(AR) sh tools/build-third-party.sh
-	CC=$(CC) AR=$(AR) sh tools/build-test-tls.sh
+	HOST_CC=$(HOST_CC) CC=$(CC) AR=$(AR) sh tools/build-test-tls.sh
 	PPTC=$(PPTC) OSBARE_DIR=$(OSBARE_DIR) AS=$(AS) CC=$(CC) LD=$(LD) \
 		AR=$(AR) OBJCOPY=$(OBJCOPY) sh tests/build-qemu.sh
 	QEMU=$(QEMU) sh tests/run-qemu.sh
