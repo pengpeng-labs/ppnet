@@ -1,5 +1,12 @@
 # 变更记录
 
+## 0.2.1
+
+- 将 BearSSL host tool 与 freestanding compiler/linker 隔离。
+- 在裸机 profile 中关闭 BearSSL Unix entropy/clock 自动探测；这些 service
+  仍只由 oscore 提供。
+- 验证拒绝 hostname 正确但由未受信 CA 签发的证书。
+
 ## 0.2.0
 
 - 使用锁定的 uIP 1.0 增加有界的单 session TCP client。

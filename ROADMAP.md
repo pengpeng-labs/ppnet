@@ -21,3 +21,17 @@ pplang policy and typed glue. DHCP and HTTP may be added on that foundation.
 - [x] N10: adapt BearSSL to oscore entropy and UTC wall-clock services.
 - [x] N11: verify QEMU TLS/HTTPS and reject an invalid certificate hostname.
 - [x] N12: publish ppnet v0.2.0 with locked dependencies and CI.
+
+## Version 0.2.1
+
+- [x] Isolate BearSSL host tools from freestanding build variables.
+- [x] Disable Unix entropy and time autodetection in the bare-metal profile.
+- [x] Reject both invalid hostnames and certificates from an untrusted CA.
+- [ ] Publish ppnet v0.2.1 after Linux CI passes.
+
+## Later boundaries
+
+HTTP semantics belong in a separate `pphttp` component over ppnet TCP/TLS;
+they do not belong in the packet and transport component. A ppnet v0.3 should
+be demand-driven by product use. Current candidates are DHCP, multiple bounded
+sessions, and IPv6; none is committed until ppos or another host needs it.

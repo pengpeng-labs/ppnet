@@ -44,7 +44,7 @@ function checkTextTree(directory) {
 }
 
 checkTextTree('.');
-if (readFileSync('VERSION', 'utf8').trim() !== '0.2.0') {
-  throw new Error('VERSION must be 0.2.0');
+if (readFileSync('VERSION', 'utf8').trim() !== '0.2.1') {
+  throw new Error('VERSION must be 0.2.1');
 }
 console.log('PPNET REPOSITORY PASS');

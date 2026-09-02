@@ -1,13 +1,7 @@
 import { readFileSync } from 'node:fs';
 import https from 'node:https';
 
-const server = https.createServer({
-  key: readFileSync('build/test-pki/server.key'),
-  cert: readFileSync('build/test-pki/server.crt'),
-  minVersion: 'TLSv1.2',
-  maxVersion: 'TLSv1.2',
-  ciphers: 'ECDHE-RSA-AES128-GCM-SHA256',
-}, (request, response) => {
+const handler = (request, response) => {
   if (request.url !== '/secure') {
     response.writeHead(404, { Connection: 'close' });
     response.end('NOT_FOUND');
@@ -19,8 +13,23 @@ const server = https.createServer({
     Connection: 'close',
   });
   response.end('PPNET_HTTPS_OK');
+};
+
+const tlsOptions = (name) => ({
+  key: readFileSync(`build/test-pki/${name}.key`),
+  cert: readFileSync(`build/test-pki/${name}.crt`),
+  minVersion: 'TLSv1.2',
+  maxVersion: 'TLSv1.2',
+  ciphers: 'ECDHE-RSA-AES128-GCM-SHA256',
 });
 
-server.listen(18443, '0.0.0.0', () => {
-  process.stdout.write('PPNET HTTPS SERVER READY\n');
-});
+const trusted = https.createServer(tlsOptions('server'), handler);
+const untrusted = https.createServer(tlsOptions('untrusted-server'), handler);
+let ready = 0;
+const announce = () => {
+  ready += 1;
+  if (ready === 2) process.stdout.write('PPNET HTTPS SERVER READY\n');
+};
+
+trusted.listen(18443, '0.0.0.0', announce);
+untrusted.listen(18444, '0.0.0.0', announce);

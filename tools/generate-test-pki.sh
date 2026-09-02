@@ -25,6 +25,25 @@ openssl x509 -req -sha256 -days 1 -in "$destination/server.csr" \
     -extfile "$root/tests/server-ext.cnf" -out "$destination/server.crt" \
     2>/dev/null
 
+openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 \
+    -out "$destination/untrusted-ca.key" 2>/dev/null
+openssl req -new -x509 -sha256 -days 2 \
+    -key "$destination/untrusted-ca.key" \
+    -subj '/CN=ppnet untrusted test CA' \
+    -addext 'basicConstraints=critical,CA:TRUE' \
+    -addext 'keyUsage=critical,keyCertSign,cRLSign' \
+    -out "$destination/untrusted-ca.crt"
+openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 \
+    -out "$destination/untrusted-server.key" 2>/dev/null
+openssl req -new -sha256 -key "$destination/untrusted-server.key" \
+    -subj '/CN=ppnet.test' -out "$destination/untrusted-server.csr"
+openssl x509 -req -sha256 -days 1 \
+    -in "$destination/untrusted-server.csr" \
+    -CA "$destination/untrusted-ca.crt" \
+    -CAkey "$destination/untrusted-ca.key" -CAcreateserial \
+    -extfile "$root/tests/server-ext.cnf" \
+    -out "$destination/untrusted-server.crt" 2>/dev/null
+
 host_tree="$third_party/bearssl-host"
 rm -rf "$host_tree"
 cp -R "$bearssl_source" "$host_tree"

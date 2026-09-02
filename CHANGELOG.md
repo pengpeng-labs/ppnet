@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.1
+
+- Isolate BearSSL host tools from the freestanding compiler and linker.
+- Disable BearSSL Unix entropy and clock autodetection in the bare-metal
+  profile; oscore remains the only provider of those services.
+- Verify rejection of a valid-hostname certificate signed by an untrusted CA.
+
 ## 0.2.0
 
 - Add a bounded, one-session TCP client using pinned uIP 1.0.

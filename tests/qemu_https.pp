@@ -75,6 +75,11 @@ fn osbare_main(boot_info: *OsBareBootInfo) {
         ppnet_https_fail("hostname-validation");
     }
     oscore_platform_write("PPNET TLS HOSTNAME REJECT PASS\n");
+    if (ppnet_tls_connect(&root, config.gateway_ipv4, 18444,
+            "ppnet.test", 5000) == 0) {
+        ppnet_https_fail("trust-validation");
+    }
+    oscore_platform_write("PPNET TLS UNTRUSTED REJECT PASS\n");
     oscore_platform_write("PPNET QEMU HTTPS PASS\n");
     osbare_halt();
 }
