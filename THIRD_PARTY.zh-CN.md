@@ -15,3 +15,5 @@ uIP 官方仓库为 `https://github.com/adamdunkels/uip`；BearSSL 官方 archiv
 
 `tools/fetch-third-party.sh` 验证这些身份。开发者可以通过 `UIP_SOURCE` 和
 `BEARSSL_SOURCE` 指向已解压的只读源码树；构建仍验证预期文件，且不会写入源码树。
+freestanding BearSSL profile 关闭 OS entropy 和 clock 自动探测；两项 service
+均由 ppnet 通过 oscore 注入。

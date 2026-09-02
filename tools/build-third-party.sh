@@ -37,7 +37,9 @@ bearssl="$destination/bearssl-work"
 rm -rf "$bearssl"
 cp -R "$bearssl_source" "$bearssl"
 rm -rf "$bearssl/build"
-bearssl_flags="$flags -DBR_AES_X86NI=0 -DBR_SSE2=0"
+bearssl_flags="$flags -DBR_AES_X86NI=0 -DBR_SSE2=0 -DBR_RDRAND=0 \
+    -DBR_USE_URANDOM=0 -DBR_USE_WIN32_RAND=0 \
+    -DBR_USE_UNIX_TIME=0 -DBR_USE_WIN32_TIME=0"
 make -C "$bearssl" lib \
     CC="$CC" AR="$AR" \
     CFLAGS="$bearssl_flags -I$bearssl/inc" >/dev/null

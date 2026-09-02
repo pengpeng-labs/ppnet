@@ -17,3 +17,5 @@ official BearSSL archive is `https://bearssl.org/bearssl-0.6.tar.gz`.
 `tools/fetch-third-party.sh` verifies these identities. Developers may set
 `UIP_SOURCE` and `BEARSSL_SOURCE` to already extracted, read-only source trees;
 the build still verifies the expected files and never writes into those trees.
+The freestanding BearSSL profile disables OS entropy and clock autodetection;
+ppnet injects both services through oscore instead.
