@@ -1,4 +1,4 @@
-import "../src/ppnet.pp";
+import "../src/datagram.pp";
 import "../src/oscore_port.pp";
 
 fn ppnet_qemu_fail(message: str) {

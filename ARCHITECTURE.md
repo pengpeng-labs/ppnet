@@ -17,5 +17,14 @@ transport bounds before dispatch. Version 0.1 accepts only unfragmented IPv4
 with a 20-byte header. Unknown traffic is ignored; malformed traffic increments
 a bounded diagnostic counter.
 
-TCP retransmission and TLS cryptography are intentionally outside the pplang
-core. Version 0.2 will adapt uIP and BearSSL behind typed ppnet contracts.
+The implementation is layered so consumers link only what they use:
+`datagram.pp` is C-free; `tcp_stack.pp` adds the uIP adapter; `ppnet.pp` adds
+the BearSSL adapter. pplang owns authority checks, limits, timeouts, and the
+synchronous API. C adapters translate narrow typed calls into upstream state
+machines. uIP owns TCP sequencing and retransmission; BearSSL owns TLS records,
+cryptography, X.509 path validation, and hostname validation.
+
+Neither upstream project may call osbare directly. All frames, monotonic time,
+entropy, and UTC time cross ppnet's oscore port. Upstream trees are copied into
+ignored build storage and rebuilt with the selected compiler; they are never
+patched in place.

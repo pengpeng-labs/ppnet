@@ -14,13 +14,16 @@ for (const name of readdirSync('src')) {
 
 const pairs = [
   'README', 'ABI', 'ARCHITECTURE', 'ROADMAP', 'CHANGELOG', 'COMPATIBILITY',
+  'THIRD_PARTY',
 ];
 for (const name of pairs) {
   readFileSync(`${name}.md`);
   readFileSync(`${name}.zh-CN.md`);
 }
 
-const textExtensions = new Set(['.md', '.pp', '.sh', '.mjs', '.toml', '.yml']);
+const textExtensions = new Set([
+  '.c', '.cnf', '.h', '.md', '.pp', '.sh', '.mjs', '.toml', '.yml',
+]);
 function checkTextTree(directory) {
   for (const entry of readdirSync(directory, { withFileTypes: true })) {
     if (['.git', 'build', 'target'].includes(entry.name)) continue;
@@ -41,7 +44,7 @@ function checkTextTree(directory) {
 }
 
 checkTextTree('.');
-if (readFileSync('VERSION', 'utf8').trim() !== '0.1.0') {
-  throw new Error('VERSION must be 0.1.0');
+if (readFileSync('VERSION', 'utf8').trim() !== '0.2.0') {
+  throw new Error('VERSION must be 0.2.0');
 }
 console.log('PPNET REPOSITORY PASS');

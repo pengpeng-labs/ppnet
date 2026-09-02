@@ -36,3 +36,14 @@ fn ppnet_port_now_ms() -> u64 {
 fn ppnet_port_idle() {
     if (ppnet_oscore_ready) { oscore_run_once(); }
 }
+
+fn ppnet_port_entropy(destination: u64, size: int) -> int {
+    if (!ppnet_oscore_ready) { return -1; }
+    return oscore_entropy_fill(&ppnet_oscore_principal, destination, size);
+}
+
+fn ppnet_port_wall_utc(output: u64) -> int {
+    if (!ppnet_oscore_ready || output == (0 as u64)) { return -1; }
+    return oscore_clock_wall_utc(&ppnet_oscore_principal,
+        output as *OsCoreDateTime);
+}

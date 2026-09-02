@@ -12,3 +12,12 @@
 
 v0.2 在 pplang policy 和类型化 glue 后接入外部 C 组件 uIP TCP 和 BearSSL TLS，
 并可在该地基上增加 DHCP 与 HTTP。
+
+## v0.2
+
+- [x] N7：从锁定的 uIP 1.0 和 BearSSL 0.6 源码可复现构建。
+- [x] N8：发布带有界 queue 的单 session uIP TCP transport。
+- [x] N9：验证 adapter 上限与 QEMU HTTP connect/send/receive path。
+- [x] N10：将 BearSSL 适配到 oscore entropy 和 UTC wall-clock service。
+- [x] N11：验证 QEMU TLS/HTTPS，并拒绝错误的 certificate hostname。
+- [ ] N12：以锁定依赖和 CI 发布 ppnet v0.2.0。

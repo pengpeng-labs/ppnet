@@ -9,8 +9,8 @@ commit = "67a3d124aa7c9096c474753f6a36bbfeb3c76b25"
 
 [[package]]
 name = "oscore"
-version = "0.1.2"
-source = "git+https://github.com/pengpeng-labs/oscore.git?tag=v0.1.2"
-checksum = "a7cb860c8a5849de649d208d4a6bb774d2727d10260df1c1f269062009ffb6ba"
-commit = "55a6b7ad11f0293f2ae4295ace3b7961b72b6ff2"
+version = "0.1.3"
+source = "git+https://github.com/pengpeng-labs/oscore.git?tag=v0.1.3"
+checksum = "d7d4a781a399a9d0b422cae08d31fdab935e06f19b592b8f8d66daf169c3f418"
+commit = "155c6d0683effc8c34cdb5cb620706d00e81eb98"
 dependencies = ["osbare"]

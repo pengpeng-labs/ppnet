@@ -1,5 +1,5 @@
 import "memory_port.pp";
-import "../src/ppnet.pp";
+import "../src/datagram.pp";
 
 fn ppnet_test_fail(code: int) -> int {
     println(code);

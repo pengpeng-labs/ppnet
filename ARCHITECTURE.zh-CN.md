@@ -14,5 +14,12 @@ header length、total length、checksum、destination、fragmentation flag 和
 transport 边界。v0.1 只接受 20 字节 header 的未分片 IPv4。未知流量被忽略；
 malformed 流量增加有界诊断计数。
 
-TCP retransmission 和 TLS cryptography 明确不进入 pplang 核心。v0.2 将在类型化
-ppnet 合同后适配 uIP 和 BearSSL。
+实现按使用需求分层链接：`datagram.pp` 不依赖 C；`tcp_stack.pp` 增加 uIP
+adapter；`ppnet.pp` 再增加 BearSSL adapter。pplang 持有 authority check、上限、
+timeout 和同步 API。C adapter 将窄类型调用翻译为上游 state machine。uIP 持有
+TCP sequencing/retransmission；BearSSL 持有 TLS record、cryptography、X.509
+path validation 和 hostname validation。
+
+两个上游项目都不能直接调用 osbare。frame、monotonic time、entropy 和 UTC time
+全部通过 ppnet 的 oscore port。上游源码复制到被忽略的 build storage，并使用
+所选 compiler 重新构建；绝不原地 patch。

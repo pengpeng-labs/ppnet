@@ -21,7 +21,7 @@ jobs:
       - name: Install system dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install --yes build-essential llvm-18-dev libpolly-18-dev qemu-system-x86
+          sudo apt-get install --yes build-essential curl git llvm-18-dev libpolly-18-dev openssl qemu-system-x86
 
       - name: Install Rust 1.88
         uses: dtolnay/rust-toolchain@1.88.0
@@ -39,5 +39,5 @@ jobs:
           make verify \
             PPTC="$RUNNER_TEMP/pptc/target/debug/pp" \
             OSBARE_DIR="$RUNNER_TEMP/osbare" \
-            AS=as CC=gcc LD=ld AR=ar OBJCOPY=objcopy \
+            HOST_CC=gcc AS=as CC=gcc LD=ld AR=ar OBJCOPY=objcopy \
             QEMU=qemu-system-x86_64
