@@ -27,7 +27,7 @@ v0.2 在 pplang policy 和类型化 glue 后接入外部 C 组件 uIP TCP 和 Be
 - [x] 将 BearSSL host tool 与 freestanding build variable 隔离。
 - [x] 在裸机 profile 中关闭 Unix entropy/time 自动探测。
 - [x] 同时拒绝错误 hostname 和来自未受信 CA 的证书。
-- [ ] Linux CI 通过后发布 ppnet v0.2.1。
+- [x] Linux CI 通过后发布 ppnet v0.2.1。
 
 ## 后续边界
 

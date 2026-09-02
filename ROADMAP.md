@@ -27,7 +27,7 @@ pplang policy and typed glue. DHCP and HTTP may be added on that foundation.
 - [x] Isolate BearSSL host tools from freestanding build variables.
 - [x] Disable Unix entropy and time autodetection in the bare-metal profile.
 - [x] Reject both invalid hostnames and certificates from an untrusted CA.
-- [ ] Publish ppnet v0.2.1 after Linux CI passes.
+- [x] Publish ppnet v0.2.1 after Linux CI passes.
 
 ## Later boundaries
 
