@@ -20,4 +20,4 @@ v0.2 在 pplang policy 和类型化 glue 后接入外部 C 组件 uIP TCP 和 Be
 - [x] N9：验证 adapter 上限与 QEMU HTTP connect/send/receive path。
 - [x] N10：将 BearSSL 适配到 oscore entropy 和 UTC wall-clock service。
 - [x] N11：验证 QEMU TLS/HTTPS，并拒绝错误的 certificate hostname。
-- [ ] N12：以锁定依赖和 CI 发布 ppnet v0.2.0。
+- [x] N12：以锁定依赖和 CI 发布 ppnet v0.2.0。

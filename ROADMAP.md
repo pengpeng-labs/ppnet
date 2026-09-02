@@ -20,4 +20,4 @@ pplang policy and typed glue. DHCP and HTTP may be added on that foundation.
 - [x] N9: verify adapter bounds and a QEMU HTTP connect/send/receive path.
 - [x] N10: adapt BearSSL to oscore entropy and UTC wall-clock services.
 - [x] N11: verify QEMU TLS/HTTPS and reject an invalid certificate hostname.
-- [ ] N12: publish ppnet v0.2.0 with locked dependencies and CI.
+- [x] N12: publish ppnet v0.2.0 with locked dependencies and CI.
