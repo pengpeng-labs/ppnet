@@ -2,8 +2,8 @@
 
 [English](COMPATIBILITY.md)
 
-ppnet 0.2.0 依赖 pplang、pplc 和 pptc 0.4.0。生产 port 使用 oscore 0.1.3，
-后者锁定 osbare 0.1.1。QEMU 验收覆盖 x86-64 PC、osbare e1000 device
+ppnet 0.2.2 依赖 pplang、pplc 和 pptc 0.4.0。生产 port 使用 oscore 0.1.4，
+后者锁定 osbare 0.1.3。QEMU 验收覆盖 x86-64 PC、osbare e1000 device
 和位于 `10.0.2.0/24` 的 QEMU user networking。
 
 可移植 ABI 不依赖 e1000 或 QEMU。其他宿主可以实现五项 packet port，同时保持

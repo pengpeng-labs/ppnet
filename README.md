@@ -9,7 +9,7 @@ BearSSL 0.6 for TLS 1.2.
 
 ppnet runs over a five-operation packet port: MAC address, send, receive,
 monotonic milliseconds, and idle. TLS additionally consumes oscore entropy and
-UTC wall-clock services. The production adapter uses oscore 0.1.3; host tests
+UTC wall-clock services. The production adapter uses oscore 0.1.4; host tests
 use a deterministic in-memory link. NIC drivers remain in osbare.
 
 ```text
@@ -34,7 +34,7 @@ See [Architecture](ARCHITECTURE.md), [ABI](ABI.md), and
 
 ## Verification
 
-With pptc 0.4.0 and an osbare 0.1.1 checkout available:
+With pptc 0.4.0 and an osbare 0.1.3 checkout available:
 
 ```sh
 make verify PPTC=/path/to/pp OSBARE_DIR=/path/to/osbare HOST_CC=cc

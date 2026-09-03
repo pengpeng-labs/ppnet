@@ -8,7 +8,7 @@ datagram 路径，与锁定的复杂标准上游实现结合：uIP 1.0 负责 TC
 
 ppnet 运行在包含五项操作的 packet port 上：MAC address、send、receive、
 monotonic milliseconds 和 idle。TLS 还使用 oscore 的 entropy 与 UTC wall-clock
-service。生产 adapter 使用 oscore 0.1.3，宿主测试使用确定性的内存链路；NIC
+service。生产 adapter 使用 oscore 0.1.4，宿主测试使用确定性的内存链路；NIC
 driver 仍由 osbare 持有。
 
 ```text
@@ -32,7 +32,7 @@ IPv6、IP fragmentation、server socket 或并发 connection。
 
 ## 验证
 
-准备好 pptc 0.4.0 和 osbare 0.1.1 checkout 后运行：
+准备好 pptc 0.4.0 和 osbare 0.1.3 checkout 后运行：
 
 ```sh
 make verify PPTC=/path/to/pp OSBARE_DIR=/path/to/osbare HOST_CC=cc

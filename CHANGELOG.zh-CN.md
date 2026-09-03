@@ -1,5 +1,9 @@
 # 变更记录
 
+## 0.2.2
+
+- 将未变化的网络 API 固定到 oscore 0.1.4 与 IRQ-safe osbare 0.1.3。
+
 ## 0.2.1
 
 - 将 BearSSL host tool 与 freestanding compiler/linker 隔离。

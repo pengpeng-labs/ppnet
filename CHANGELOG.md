@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.2
+
+- Pin the unchanged network API to oscore 0.1.4 and IRQ-safe osbare 0.1.3.
+
 ## 0.2.1
 
 - Isolate BearSSL host tools from the freestanding compiler and linker.
